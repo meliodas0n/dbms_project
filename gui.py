@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import simpledialog
+from tkinter import filedialog
 import sys
 import os
 
@@ -8,7 +9,7 @@ root.title("BROWSE FILES")
 root.geometry("800x600")
 
 def browse_files():
-    dir_path = simpledialog.askstring("Browse", "Enter the path : ")
+    dir_path = filedialog.askdirectory()
     subfolders = [f.path for f in os.scandir(dir_path) if f.is_dir()]
 
     extensions = ('.mp3', '.flac')
