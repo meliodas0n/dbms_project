@@ -13,11 +13,14 @@ def browse_files():
     subfolders = [f.path for f in os.scandir(dir_path) if f.is_dir()]
 
     extensions = ('.mp3', '.flac')
-
+    file_frame = Label(master = fileframe, text = "Files Present", bg = "white", fg = "black")
+    file_frame.grid(row = 0, column = 0)
+    
     for root, dirs, files in os.walk(dir_path):
-        for file in files:
+        for idx, file in enumerate(files):
             if file.endswith(extensions):
-                print(str(file))
+                file_frame_file = Label(master = file_frame, text = file, fg = "black", bg = "white")
+                file_frame_file.grid(row = idx + 1, column = 0)
 
 buttonframe = LabelFrame(root, text = "Button", font = ("times new roman", 15, "bold italic"), fg = "white", bg = "black")
 buttonframe.place(x = 0, y = 0, width = 800, height = 100)
